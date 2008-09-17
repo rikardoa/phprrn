@@ -6,7 +6,7 @@
  * @package Persistencia
  */
 /**
- * classe gcConexao
+ * classe Conexao
  * Gerencia as conexões com banco de dados
  */
 class Conexao {
@@ -106,4 +106,7 @@ class Conexao {
 		return $this->conexao;
 	}
 }
+//include_once "config.php";
+//$cnxIntra = new Conexao("mysql", "servidor","banco","usuario","senha");
+//$cnxIntra->getConexao();
 ?>
