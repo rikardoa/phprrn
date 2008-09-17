@@ -1,7 +1,7 @@
 <?php
 /**
  * Arquivo de Configuração da Classe TConexao
- * @author Alan Gustavo Santana Ribeiro <alan@prrn.mpf.gov.br> em 18/08/2008
+ * @author Informática PR/RN <informatica@prrn.mpf.gov.br> em 18/08/2008
  * @version 1.0
  * @package Persistencia
  */
