@@ -102,7 +102,7 @@ class Consulta {
 	}
 }
 //include_once "config.php";
-//$cnxIntra = new Conexao("mysql", "intranet.prrn.mpf.gov.br","intranet","intranet","root123");
+//$cnxIntra = new Conexao("mysql", "host","base","usuario","senha");
 //$cnxIntra->getConexao();
 //$queryIntra = new Consulta($cnxIntra, "SELECT NOME, IRA FROM CONCURSO_ESTAGIARIO WHERE NOME LIKE '%RIBEIRO%'");
 //echo "<br>Numero de Registros:" . $queryIntra->getQtdeLinhas();
