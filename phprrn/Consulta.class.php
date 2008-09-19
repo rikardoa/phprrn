@@ -10,7 +10,7 @@
  * Utilizada para executar consultas SQL em um Banco de Dados que retornam conjunto de dados.
  * Para as ações no banco que não retornam conjunto de dados, como por exemplo INSERT, UPDATES
  * DELETES, execução de StoreProcedures (que não retornam conjunto de dados e etc..). Para esse
- * caso utilize a gcComando
+ * caso utilize a classe Comando
  */
 class Consulta {
 	/**
