@@ -15,28 +15,34 @@
 class Consulta {
 	/**
 	 * Variavel que armazena a string de consulta a ser utilizada no Banco de Dados
-	 * @access private;
+	 * @access protected;
 	 * @var string Ultimo Comando SQL usado
 	 */
-	private $stringSQL;
+	protected $stringSQL;
 	/**
 	 * Variavel que armazena o conjunto de resultados
-	 * @access private;
+	 * @access protected;
 	 * @var array array contendo o conjunto de resultados
 	 */
-	private $resultado = null;
+	protected $resultado = null;
 	/**
 	 * Variavel que armazena o conjunto de campos
-	 * @access private;
+	 * @access protected;
 	 * @var array array contendo o conjunto de campos
 	 */
-	 private $campos = null;
+	protected $campos = null;
 	/**
 	 * Variavel que armazena a conexao ao Banco de Dados
 	 * @access protected;
 	 * @var PDO - Conexao com o Banco de Dados
 	 */
-	 protected $conexao = null;
+	protected $conexao = null;
+	/**
+	 * Variavel que verifica se já houve a execucação da consulta
+	 * @access protected;
+	 * @var boolean
+	 */
+	protected $exec = false;
 	/**
 	 * Construtor da Classe
 	 * @param object $conexao Objeto do tipo MConexao
@@ -55,6 +61,7 @@ class Consulta {
 
 		}
 		$this->stringSQL= $sql;
+		$this->resultado= $this->conexao->prepare($this->stringSQL);
 	}
 	/**
 	 * Método que retorna um array com os resultados retornados da consulta ao banco de dados
@@ -93,10 +100,10 @@ class Consulta {
 	/**
 	 * Método que executa a consulta
 	 */
-	public function executa($sql=null){
-		if($this->resultado == null){
-			$this->resultado= $this->conexao->prepare($this->stringSQL);
-			$this->resultado->execute($sql);
+	public function executa(){
+		if(!$this->exec){
+			$this->resultado->execute();
+			$this->exec = true;
 		}
 	}
 }
