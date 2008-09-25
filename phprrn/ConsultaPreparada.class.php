@@ -12,7 +12,7 @@
  * UPDATES, DELETES, execução de StoreProcedures (que não retornam conjunto de dados e etc..).
  * No caso de INSERT, UPDATES e etc.. utilize a classe Comando ou ComandoPreparado.
  */
-class ConsultaPreparada extends Consulta {
+class ConsultaPreparada extends Consulta implements iPreparado {
 	public function ConsultaPreparada($conexao=null, $sql=null) {
 		parent::Consulta($conexao, $sql);
 	}
