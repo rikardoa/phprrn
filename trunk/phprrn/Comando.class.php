@@ -14,16 +14,22 @@
 class Comando {
 	/**
 	 * Variavel que armazena a string de consulta a ser utilizada no Banco de Dados
-	 * @access private;
+	 * @access protected;
 	 * @var string Ultimo Comando SQL usado
 	 */
-	private $stringSQL;
+	protected $stringSQL;
 	/**
 	 * Variavel que armazena a conexao ao Banco de Dados
-	 * @access private;
+	 * @access protected;
 	 * @var PDO - Conexao com o Banco de Dados
 	 */
-	 private $conexao = null;
+	protected $conexao = null;
+	/**
+	 * Variavel que armazena o conjunto de resultados
+	 * @access protected;
+	 * @var array array contendo o conjunto de resultados
+	 */
+	protected $resultado = null;
 	/**
 	 * Construtor da Classe
 	 * @param object $conexao Objeto do tipo MConexao
@@ -42,17 +48,24 @@ class Comando {
 
 		}
 		$this->stringSQL= $sql;
+		$this->resultado= $this->conexao->prepare($this->stringSQL);
 	}
 	/**
 	 * Método que executa a Instrução SQL e retorna a quantidade de registros afetados.
 	 */
 	public function executa(){
-		$ret = $this->conexao->exec($this->stringSQL);
+		$ret = $this->resultado->execute();
 		if(!$ret){
 			$erro = ":Problemas na Execucao do Comando SQL!";
 			die(__FILE__ . ":" . __LINE__ . $erro);
 		}
-		return $ret;
+		return $this->resultado->rowCount();
+	}
+	/**
+	 * Método que retorna o último ID inserido.
+	 */
+	public function getUltimoId(){
+		return $this->conexao->lastInsertId();
 	}
 }
 //include_once "config.php";
@@ -63,5 +76,5 @@ class Comando {
 //  (3,'Exames e Outros'),
 //  (4,'m² Filme')";
 //$queryIntra = new Comando($cnxIntra, $sql);
-//echo $queryIntra->executa();
+//echo $queryIntra->executa(); // Retorna 4 (Que é a quantidade de Registros afetados)!
 ?>
