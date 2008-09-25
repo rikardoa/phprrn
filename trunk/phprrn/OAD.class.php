@@ -153,4 +153,40 @@ class OAD {
     	}
     }
 }
+
+//include_once "config.php";
+//
+//class Tipo_Amb extends Modelo {
+//	protected $id;
+//	protected $Descricao;
+//}
+//// Você pode extender o OAD para implementar insert, updates e deletes personalizados
+//class OADTipo_Amb extends OAD {
+//	//Optamos por não sobrescrever nenhum dos métodos.
+//	//Se não for sobrescrito, o OAD faz select,insert,update e delete automaticamente.
+//}
+//$cnxIntra = new Conexao("mysql", "localhost","test","root","");
+//// Crio um objeto Modelo
+//$a = new Tipo_Amb();
+//// Você pode preencher os campos
+//$a->Descricao = "Descrição Qualquer";
+//// Então você cria o Objeto de Acesso a dados
+//$o = new OADTipo_Amb($cnxIntra, $a);
+//// Faz a Inserção dos dados
+//$o->insert();
+//// Agora o Model já tem um Id no banco.
+//echo "Id = " . $a->id . "<br>";
+//echo "Descricao = " . $a->Descricao . "<br>";
+//// Vamos criar um outro model;
+//$b = new Tipo_Amb();
+//// Dessa vez eu Criei o Objeto a dados padrão
+//$c = new OAD($cnxIntra, $b);
+//// Preencho todos os atributos do novo Modelo (passando ao select o valor da chave primária);
+//$c->select($a->id);
+//echo "Descricao de B = " . $b->Descricao . "<br>";
+//$b->Descricao = "Descricao Atualizada!";
+//$c->update();
+//echo "Descricao de B = " . $b->Descricao . "<br>";
+//$c->delete();
+
 ?>
