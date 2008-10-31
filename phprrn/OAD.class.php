@@ -1,6 +1,38 @@
 <?php
-
+/**
+ * Arquivo de Definição da Classe OAD
+ * LEIA!
+ * 1) classe OAD
+ * É utilizada para implementar a persistência de modelos. A classe recebe um objeto
+ * do tipo conexao com o banco de dados e um modelo. Utilizando os métodos da classe
+ * OAD é possível realizar o CRUD - Create, Retrieve Update e Delete. De forma mais
+ * simples a classe OAD fará a persistência dos models, criando métodos automáticos
+ * para inserção, atualização, deleção e seleção.
+ *
+ * 2) Herdando um OAD
+ * As vezes a inserção simples não funciona, pois há mais coisas para fazer na inserção,
+ * atualização e deleção. Nesse caso, é possível criar uma especialização de um OAD para
+ * tratar especificamente da persistência de um modelo. E aí será possível modificar o
+ * nome da tabela (que por padrão é o nome da classe Modelo), a chave primária (que por
+ * padrão é considerado o primeiro atributo do Modelo), ou seja, se você precisar alterar
+ * qualquer um desses padrões basta sobrescrever os métodos _getChavePrimaria() e
+ * _getEntidade(). O mesmo pode ser feito para alterar os métodos que retornam os comandos
+ * SQL padrão. Os métodos que retornam o SQL são: SQLinsert(), SQLupdate, SQLdelete,
+ * SQLselect, além disso você poderá sobrescrever os métodos insert(), update(), delete(),
+ * select(), salvar() e criar outros que sejam necessários.
+ */
+ /**
+ * @author Alan em 20/08/2008
+ * @version 1.0
+ * @package Persistencia
+ *
+ */
 class OAD {
+	/**
+	 * Variavel que guarda o modelo a ser persistido
+	 * @access protected
+	 * @var Modelo objeto
+	 */
 	protected $_model;
 	protected $_conexao;
     public function OAD(Conexao $c, Modelo $m) {
@@ -153,7 +185,7 @@ class OAD {
     	}
     }
 }
-
+$a = new OAD("asd","adsfd");
 //include_once "config.php";
 //
 //class Tipo_Amb extends Modelo {
